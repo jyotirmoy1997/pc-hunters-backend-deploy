@@ -4,7 +4,7 @@ const authenticateUser = async (req, res, next) => {
   const token = req.signedCookies.token;
 
   if (!token) {
-    throw new Error('Authentication Invalid');
+    return res.status(401).json("Un-Authorized")
   }
   try {
     const { name, userId, role } = isTokenValid(token);
